@@ -3,7 +3,7 @@ import { chromium } from 'playwright-core';
 const EXE = process.env.CHROME_EXE ?? '';
 const URL = 'http://localhost:4173/';
 const results = [];
-const check = (name, ok, extra = '') => { results.push(`${ok ? 'PASS' : 'FAIL'}  ${name}${extra ? ' — ' + extra : ''}`); };
+const check = (name, ok, extra = '') => { results.push(`${ok ? 'PASS' : 'FAIL'}  ${name}${extra ? ', ' + extra : ''}`); };
 
 const browser = await chromium.launch({ executablePath: EXE, args: ['--no-sandbox'] });
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -64,12 +64,12 @@ await firstMsg.locator('.msg-actions button').nth(1).click();
 await page.waitForTimeout(500);
 check('reaction chip appears', (await page.locator('.chip').count()) >= 1);
 
-// Bot reply may arrive (65% chance) — wait and see, non-fatal
+// Bot reply may arrive (65% chance), wait and see, non-fatal
 await page.waitForTimeout(4500);
 const stream3 = await page.locator('#stream').innerText();
 results.push(`INFO  bot/neighbour activity after send: ${stream3.includes('Welcome to the circle') || stream3.split('\n').length > 10 ? 'activity present' : 'quiet this run (randomised)'}`);
 
-// Second tab as Ben — cross-tab real-time via BroadcastChannel
+// Second tab as Ben, cross-tab real-time via BroadcastChannel
 const page2 = await ctx.newPage();
 const errors2 = [];
 page2.on('pageerror', (e) => errors2.push(e.message));
@@ -77,11 +77,11 @@ await page2.goto(URL, { waitUntil: 'networkidle' });
 await page2.click('[data-persona="ben"]');
 await page2.waitForSelector('.shell');
 await page2.waitForSelector('.msg');
-await page2.fill('#composer-input', 'Ben here — cross-tab message!');
+await page2.fill('#composer-input', 'Ben here, cross-tab message!');
 await page2.keyboard.press('Enter');
 await page.waitForTimeout(1200);
 const avaStream = await page.locator('#stream').innerText();
-check('cross-tab message from Ben reaches Ava live', avaStream.includes('Ben here — cross-tab message!'));
+check('cross-tab message from Ben reaches Ava live', avaStream.includes('Ben here, cross-tab message!'));
 await page.screenshot({ path: '/tmp/smoke/3-crosstab.png' });
 
 // DM flow on page2: open DM with Ava, send

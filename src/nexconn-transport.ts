@@ -205,7 +205,7 @@ export class NexconnTransport implements ChatTransport {
           groupName: `${room.emoji} ${room.name}`,
           inviteeUserIds: invitees,
         });
-      } catch { /* group may already exist — join below is what matters */ }
+      } catch { /* group may already exist, join below is what matters */ }
       try {
         await new GroupChannel(room.id).join();
       } catch { /* already a member, or group pending creation */ }

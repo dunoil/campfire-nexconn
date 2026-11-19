@@ -1,8 +1,8 @@
-# 🔥 Campfire — Community Rooms powered by Nexconn
+# 🔥 Campfire, Community Rooms powered by Nexconn
 
 **Campfire is a real-time community chat app built on the [Nexconn Chat SDK](https://docs.nexconn.ai).**
 Neighbours join topic rooms and direct messages, run **live polls inside the chat**, react to
-messages, and see who is typing — everything driven by Nexconn group/direct channels and
+messages, and see who is typing, everything driven by Nexconn group/direct channels and
 Nexconn **custom messages**.
 
 > **Nexconn Build Challenge 2026** entry · Track: **Social & Community** · Solo build by
@@ -14,18 +14,18 @@ Nexconn **custom messages**.
 
 ## What it does
 
-- **Topic rooms** — four community rooms (Campfire General, Show & Tell, Help Circle,
+- **Topic rooms**, four community rooms (Campfire General, Show & Tell, Help Circle,
   Weekend Plans), each a Nexconn **group channel** with history, unread badges and
   last-message previews.
-- **Direct messages** — 1:1 Nexconn **direct channels** between community members.
-- **Live polls in chat** — anyone can post a poll from the composer. Polls and votes are
-  Nexconn **custom message types** (`campfire:poll`, `campfire:vote`), so every client —
-  phone, second tab, second device — tallies the same results in real time. Tap to vote,
+- **Direct messages**, 1:1 Nexconn **direct channels** between community members.
+- **Live polls in chat**, anyone can post a poll from the composer. Polls and votes are
+  Nexconn **custom message types** (`campfire:poll`, `campfire:vote`), so every client, 
+  phone, second tab, second device, tallies the same results in real time. Tap to vote,
   tap again to change your vote.
-- **Reactions** — 👍 ❤️ 😂 🎉 on any message via the SDK's message-reaction APIs, with
+- **Reactions**, 👍 ❤️ 😂 🎉 on any message via the SDK's message-reaction APIs, with
   live updates through reaction-change events.
-- **Typing presence** — "Ben is typing…" via the SDK's typing-status events.
-- **Persona picker** — pick one of four community members to enter as; in live mode each
+- **Typing presence**, "Ben is typing…" via the SDK's typing-status events.
+- **Persona picker**, pick one of four community members to enter as; in live mode each
   persona is a real Nexconn user ID with its own server-issued token.
 
 ## Two ways to run it
@@ -35,13 +35,13 @@ Nexconn **custom messages**.
 If `public/config.js` has no App Key, Campfire runs on a built-in **local demo transport**:
 messages persist in `localStorage` and sync between open browser tabs in real time
 (BroadcastChannel), with friendly scripted neighbours keeping a solo session lively.
-This is what the public static demo does until keys are added — the UI, polls, reactions
+This is what the public static demo does until keys are added, the UI, polls, reactions
 and typing all behave the same.
 
 ### 2. Live mode (real Nexconn cloud chat)
 
 1. **Create a free Nexconn app** at [console.nexconn.ai](https://console.nexconn.ai)
-   (registration creates an app on the Free plan — no credit card). Copy the **App Key**
+   (registration creates an app on the Free plan, no credit card). Copy the **App Key**
    and **App Secret** from Key Management.
 2. **Run the token server** in [`server/`](server/token-server.mjs) (zero-dependency
    Node 18+). It holds the App Secret, signs Nexconn Server API requests
@@ -53,7 +53,7 @@ and typing all behave the same.
    curl -X POST http://localhost:8787/seed
    ```
 
-   Deploy it to any free Node host (Render, Railway, Fly.io, a VPS…) — the App Secret
+   Deploy it to any free Node host (Render, Railway, Fly.io, a VPS…), the App Secret
    must only ever live there, never in the web app.
 3. **Point the web app at it** in `public/config.js`:
 
@@ -64,7 +64,7 @@ and typing all behave the same.
    };
    ```
 
-4. `npm run build` and host `dist/` anywhere static (GitHub Pages works out of the box —
+4. `npm run build` and host `dist/` anywhere static (GitHub Pages works out of the box, 
    a ready workflow is in `.github/workflows/pages.yml`).
 
 The app also creates/joins the rooms from the client on first connect
@@ -107,7 +107,7 @@ index.html               app shell (loads runtime config.js, then the bundle)
 public/config.js         runtime config: App Key + token server URL (empty = demo mode)
 src/
   main.ts                UI: persona gate, channel list, stream, polls, composer
-  nexconn-transport.ts   live transport — the real Nexconn SDK integration
+  nexconn-transport.ts   live transport, the real Nexconn SDK integration
   demo-transport.ts      local demo transport (same interface, zero accounts)
   types.ts               transport contract shared by both transports
   data.ts                personas + rooms (map 1:1 to Nexconn user IDs / group IDs)
@@ -121,7 +121,7 @@ docs/                    screenshots from the verified headless run
 - ✅ App builds clean (`tsc` + Vite) and passes a 17-point headless smoke test in demo
   mode, including real cross-tab messaging, poll voting and reactions.
 - ⏳ Live mode is fully implemented against the official SDK types and docs, and compiles
-  against `@nexconn/chat` 26.x — it activates the moment an App Key + token server are
+  against `@nexconn/chat` 26.x, it activates the moment an App Key + token server are
   configured. It has **not** been run against a real Nexconn app yet, because that needs
   a Nexconn developer account (sign-up is a submission step, tracked in
   [SUBMISSION.md](SUBMISSION.md)).

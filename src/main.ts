@@ -1,4 +1,4 @@
-// Campfire — real-time community rooms powered by the Nexconn Chat SDK.
+// Campfire, real-time community rooms powered by the Nexconn Chat SDK.
 // Entry for the Nexconn Build Challenge 2026, Social & Community track.
 
 import './styles.css';
@@ -72,12 +72,12 @@ function renderGate(): void {
   <div class="gate">
     <div class="gate-card">
       <div class="brand-big">🔥 Campfire</div>
-      <p class="tagline">Real-time community rooms where the chat runs the show —
+      <p class="tagline">Real-time community rooms where the chat runs the show, 
       live polls, reactions and typing presence, powered by the <strong>Nexconn Chat SDK</strong>.</p>
       <div class="mode-banner ${liveMode ? 'live' : 'demo'}">
         ${liveMode
-          ? '🟢 <strong>Live mode</strong> — connected to Nexconn cloud chat via your App Key.'
-          : '🟡 <strong>Demo mode</strong> — no Nexconn keys configured, so Campfire runs on a local demo transport (open two tabs as different people to chat live). Add your App Key + token server in <code>config.js</code> to go live on the real SDK.'}
+          ? '🟢 <strong>Live mode</strong>, connected to Nexconn cloud chat via your App Key.'
+          : '🟡 <strong>Demo mode</strong>, no Nexconn keys configured, so Campfire runs on a local demo transport (open two tabs as different people to chat live). Add your App Key + token server in <code>config.js</code> to go live on the real SDK.'}
       </div>
       <h2>Pick your seat by the fire</h2>
       <div class="persona-grid">
@@ -288,7 +288,7 @@ function renderDetails(): void {
     const p = personaById(active.id);
     el.innerHTML = `
       <h3>Direct message</h3>
-      <p>You and ${esc(p.name)} — a <strong>Nexconn direct channel</strong>. Messages, reactions
+      <p>You and ${esc(p.name)}, a <strong>Nexconn direct channel</strong>. Messages, reactions
       and typing presence work here exactly as in the group rooms.</p>
       <div class="sdk-note">Direct channels need no setup in Nexconn: a channel exists as soon
       as the first message is sent to a user ID.</div>`;
@@ -346,7 +346,7 @@ function renderStream(scrollToBottom = false): void {
     (hasMoreHistory ? `<button id="load-older" class="load-older">Load older messages</button>` : '') +
     (visible.length
       ? visible.map(messageHtml).join('')
-      : `<div class="empty">No messages yet — start the conversation 👋</div>`);
+      : `<div class="empty">No messages yet, start the conversation 👋</div>`);
   stream.querySelectorAll('[data-vote]').forEach((el) => {
     el.addEventListener('click', () => {
       const [pollId, idx] = (el as HTMLElement).dataset.vote!.split(':');
@@ -465,7 +465,7 @@ function renderComposer(): void {
     <button id="send-btn" class="send-btn">Send</button>
   </div>
   <div id="poll-composer" class="poll-composer" hidden>
-    <input id="poll-q" type="text" placeholder="Poll question — e.g. Where should we meet on Saturday?" />
+    <input id="poll-q" type="text" placeholder="Poll question, e.g. Where should we meet on Saturday?" />
     <div class="poll-opts">
       <input class="poll-opt-input" type="text" placeholder="Option 1" />
       <input class="poll-opt-input" type="text" placeholder="Option 2" />

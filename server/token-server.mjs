@@ -1,4 +1,4 @@
-// Campfire token server — the only backend Campfire needs.
+// Campfire token server, the only backend Campfire needs.
 //
 // Why it exists: Nexconn access tokens are issued by the Nexconn Server API,
 // and every Server API request is signed with the App Secret

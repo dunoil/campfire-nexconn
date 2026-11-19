@@ -6,7 +6,7 @@
 // This transport exists so the app (and its demo video) is fully runnable
 // from static hosting before any Nexconn keys exist. Set an App Key and a
 // token server URL in config.js and the app uses the real Nexconn SDK
-// instead — the UI code does not change.
+// instead, the UI code does not change.
 
 import { PERSONAS, ROOMS, personaById, roomById } from './data';
 import type { Persona } from './data';
@@ -27,7 +27,7 @@ type Store = Record<string, ChatMessage[]>;
 const BOT_LINES: Record<string, string[]> = {
   'campfire-general': [
     'Welcome to the circle! 🔥 Grab a seat.',
-    'Morning all — coffee is on, what is everyone working on today?',
+    'Morning all, coffee is on, what is everyone working on today?',
     'That sounds great. Share a photo when you can!',
     'Ha! Classic. This is why I love this group.',
   ],
@@ -38,18 +38,18 @@ const BOT_LINES: Record<string, string[]> = {
     'Instant favourite. Thanks for sharing!',
   ],
   'help-circle': [
-    'I can help with that this evening — ping me directly.',
+    'I can help with that this evening, ping me directly.',
     'Had the same issue last month; happy to walk you through it.',
     'Between us we will figure it out 💪',
   ],
   'weekend-plans': [
     'I am in! 🙋',
     'Saturday works better for me, but I can flex.',
-    'Vote cast — the people have spoken.',
+    'Vote cast, the people have spoken.',
   ],
   direct: [
     'Hey! Good to hear from you 😊',
-    'Sure thing — let us sort it in the group room too.',
+    'Sure thing, let us sort it in the group room too.',
     'Sounds like a plan!',
   ],
 };
@@ -75,7 +75,7 @@ export class DemoTransport implements ChatTransport {
     try {
       const raw = localStorage.getItem(STORE_KEY);
       if (raw) return JSON.parse(raw) as Store;
-    } catch { /* corrupted storage — reseed */ }
+    } catch { /* corrupted storage, reseed */ }
     const seeded = this.seed();
     localStorage.setItem(STORE_KEY, JSON.stringify(seeded));
     return seeded;
@@ -111,10 +111,10 @@ export class DemoTransport implements ChatTransport {
     const pollId = 'seed-poll-1';
     const store: Store = {
       [channelKey(general)]: [
-        msg(general, 'ava', t(180), { text: 'Welcome to Campfire, everyone! This is our main circle — intros, ideas, and the occasional poll.' }),
+        msg(general, 'ava', t(180), { text: 'Welcome to Campfire, everyone! This is our main circle, intros, ideas, and the occasional poll.' }),
         msg(general, 'ben', t(172), { text: 'Ben here 📸 I shoot film around the neighbourhood. Say hi if you spot me with the old Leica.' }),
         msg(general, 'chen', t(165), { text: 'Chen, indie game dev. Currently building a tiny co-op fishing game 🎣' }),
-        msg(general, 'dina', t(158), { text: 'Dina! I run the plant swap — bring a cutting, take a cutting 🌱' }),
+        msg(general, 'dina', t(158), { text: 'Dina! I run the plant swap, bring a cutting, take a cutting 🌱' }),
         msg(general, 'ava', t(120), {
           id: pollId,
           type: 'poll',
@@ -128,7 +128,7 @@ export class DemoTransport implements ChatTransport {
       [channelKey(showTell)]: [
         msg(showTell, 'chen', t(240), { text: 'WIP Wednesday: the fishing game now has weather. Rain makes the fish bolder, apparently.' }),
         msg(showTell, 'ava', t(235), { text: 'The little splash particles are adorable. Ship it!' }),
-        msg(showTell, 'ben', t(90), { text: 'Developed last weekend\'s roll — the market at golden hour never misses.' }),
+        msg(showTell, 'ben', t(90), { text: 'Developed last weekend\'s roll, the market at golden hour never misses.' }),
       ],
       [channelKey(help)]: [
         msg(help, 'dina', t(300), { text: 'Does anyone have a ladder I could borrow on Saturday? Picture-hanging mission.' }),
@@ -144,7 +144,7 @@ export class DemoTransport implements ChatTransport {
     // lazily per persona pair; seed one for ava<->ben as an example.
     store[dmKey('ava', 'ben')] = [
       msg({ kind: 'direct', id: 'ben' }, 'ava', t(400), { text: 'Ben, could you take photos at the next community night?' }),
-      msg({ kind: 'direct', id: 'ava' }, 'ben', t(398), { text: 'Of course — film or digital?' }),
+      msg({ kind: 'direct', id: 'ava' }, 'ben', t(398), { text: 'Of course, film or digital?' }),
     ];
     return store;
   }

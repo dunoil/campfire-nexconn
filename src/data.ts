@@ -34,7 +34,7 @@ export const ROOMS: RoomDef[] = [
     id: 'show-and-tell',
     name: 'Show & Tell',
     emoji: '🎨',
-    topic: 'Projects, photos, works in progress — show the group what you made.',
+    topic: 'Projects, photos, works in progress, show the group what you made.',
   },
   {
     id: 'help-circle',

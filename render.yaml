@@ -1,0 +1,17 @@
+# Render Blueprint: Campfire token server (zero-dependency Node).
+# The web app itself is static (GitHub Pages); only the token server needs a host.
+# Env values are entered in the Render dashboard (sync: false = never stored here).
+services:
+  - type: web
+    name: campfire-token-server
+    runtime: node
+    plan: free
+    buildCommand: echo "no build step - zero-dependency server"
+    startCommand: node server/token-server.mjs
+    envVars:
+      - key: NEXCONN_APP_KEY
+        sync: false
+      - key: NEXCONN_APP_SECRET
+        sync: false
+      - key: NEXCONN_API_BASE
+        sync: false
