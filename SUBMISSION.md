@@ -44,11 +44,14 @@ Register/submit at: https://reskilll.com/hack/nexconn
 - [x] Live app loads at the Pages URL with the live config (App Key + token
       server URL verified in the served config.js; banner renders Live mode
       from that config)
-- [ ] Two personas in a real browser exchange live messages + vote in the
-      same poll (demo mode cross-tab verified 17/17; live token path verified;
-      full live two-browser pass still to do)
+- [x] Two personas in a real browser exchange live messages + vote in the
+      same poll (verified 20 Nov 2026: Ava and Ben messaged both ways, Ben's
+      poll vote tallied live on Ava's screen; room membership fixed server
+      side first, all 4 rooms hold all 4 personas; pre-join history access
+      enabled in the Nexconn Console)
 - [x] App Key pasted into WRITEUP.md and WRITEUP.pdf produced
-- [ ] Demo video assembled (campfire-demo.mp4), upload + URL in the form
+- [x] Demo video assembled (campfire-demo.mp4), published on YouTube:
+      https://youtu.be/aaRDXQy20lk
 - [x] Repo is public and its README renders with screenshots
-- [ ] Submit on Reskilll **before Nov 22, 23:59 IST**, then screenshot the
-      confirmation for records
+- [x] Submitted on Reskilll 20 Nov 2026 (dashboard: "Your team has
+      submitted. Results on Dec 1."), still editable until Nov 23, 02:29 WITA
