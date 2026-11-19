@@ -118,7 +118,7 @@ const server = createServer(async (req, res) => {
         });
         const joined = await nexconn('/v4/group-channel/join', {
           channelId: room.id,
-          owner: PERSONA_IDS[0],
+          userIds: PERSONA_IDS,
         });
         results.push({ room: room.id, create: created.json, join: joined.json });
       }
